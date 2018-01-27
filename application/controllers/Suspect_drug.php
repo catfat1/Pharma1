@@ -60,8 +60,7 @@ class Suspect_drug extends CI_Controller {
       	$this->suspect_drug_model->set_suspect_drugs($data);
         $data['report']=$this->report_model->get_reports($this->input->post('suspect_drug_report_id1'));
         $data['tab'] = 'concomitant_drug';
-        $data['position'] = 'complain';
-        
+	$data['position'] = 'complain';
 	    $this->load->view('home/index',$data);
             
        

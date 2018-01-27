@@ -1,4 +1,3 @@
-
 <?php //echo ($tab == 'reporter') ? 'active' : ''; ?>
 <!DOCTYPE html>
 <html lang="en"> 
@@ -1431,7 +1430,7 @@
 						<div class="" ></div>
 						<h3>Reporters</h3>
 						<p> </p>
-					</div>		</a>
+					</div>
 				</div>
 
 				<!--Patients section-->
@@ -1441,7 +1440,7 @@
 						<div class=""></div>
 						<h3>Patients</h3>
 						<p> </p>
-					</div>		</a>
+					</div>
 				</div>
 
 				<!--Suspected Drugs section-->
@@ -1451,7 +1450,7 @@
 						<div class=""></div>
 						<h3>Suspected Drugs</h3>
 						<p> </p>
-					</div>		</a>
+					</div>
 				</div>
 
 				<!--Concomitant Drug section-->
@@ -1461,7 +1460,7 @@
 						<div class=""></div>
 						<h3>Concomitant Drug</h3>
 						<p> </p>
-					</div>		</a>
+					</div>
 				</div>
 
 				<!--A D R section-->
@@ -1471,19 +1470,17 @@
 						<div class=""></div>
 						<h3>A D R</h3>
 						<p></p>
-					</div>		</a>
+					</div>
 				</div>
 
 				<!--Laboratory Test section-->
 				<div class="col-md-2 single-member col-sm-4">
                 		       <a  data-toggle="modal" data-target="#Laboratory_Test_id" >
-					<div class="person-detail" data-toggle="popover" data-trigger="hover" 
-					 data-content="Some content inside the popover">
+					<div class="person-detail" data-toggle="popover" data-trigger="hover"  data-content="Some content inside the popover">
 						<div class=""></div>
 						<h3>Laboratory Test</h3>
 						<p> </p>
 					</div>
-					</a>
 				</div>
 
 
@@ -2848,8 +2845,8 @@ $('#example').DataTable( {
 </script>
 
 <script>
+/*to focuse on the report when click*/
 $(function(){
 document.getElementById('<?php echo $position;?>').scrollIntoView()
 });
 </script>
-

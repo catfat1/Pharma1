@@ -56,8 +56,7 @@ class Patients extends CI_Controller {
 
         $data['report']=$this->report_model->get_reports($this->input->post('patients_report_id1'));
         $data['tab'] = 'suspected_drugs';
-        $data['position'] = 'complain';
-        
+	$data['position'] = 'complain';
 	    $this->load->view('home/index',$data);
             
         //}

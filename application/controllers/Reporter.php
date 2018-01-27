@@ -17,8 +17,7 @@ class Reporter extends CI_Controller {
         $data['reporter']= $this->reporter_model->get_reporters($reporter_id);
         $data['report']=$this->report_model->get_reports($reporter_report_id);
         $data['tab'] = 'patients';
-        $data['position'] = 'complain';
-        
+	$data['position'] = 'complain';
         $this->load->view('home/index',$data);
     }
 }

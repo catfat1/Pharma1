@@ -90,6 +90,13 @@
 			 				//echo"<li><a class='menu' href='#report_details'>Reports</a></li>";
 							?>
 
+
+
+							<?php if( $this->session->userdata('flag')== 1)
+			 				echo"<li><a class='menu' href='".base_url()."index.php/Report/show_report_content'>Reports content</a></li>";
+			 				//echo"<li><a class='menu' href='#report_details'>Reports</a></li>";
+							?>
+
 				        	<li><a class="menu" href="<?php echo base_url();?>index.php/Home/main_page#complain"> Complain </a></li>
 
 							<?php if( $this->session->userdata('status')== 1) 

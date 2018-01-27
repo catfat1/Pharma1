@@ -48,8 +48,6 @@ class Lab extends CI_Controller {
       	$this->lab_model->set_lab($data);
         $data['report']=$this->report_model->get_reports($this->input->post('lab_report_id'));
         $data['tab'] = 'laboratory_test';
-        $data['position'] = 'complain';
-        
 	    $this->load->view('home/index',$data);
             
        

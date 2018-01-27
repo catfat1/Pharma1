@@ -56,19 +56,15 @@ class Concomitant_drug extends CI_Controller {
 	);
 
       	$this->concomitant_drug_model->set_concomitant_drug($data);
-        $data['report']=$this->report_model->get_reports($this->input->post('suspect_drug_report_id1'));
+        $data['report']=$this->report_model->get_reports($this->input->post('concomitant_drug_report_id'));
         $data['tab'] = 'adverse_drug_reaction';
-        $data['position'] = 'complain';
-        
+	$data['position'] = 'complain';
 	    $this->load->view('home/index',$data);
             
        
     }
 
-public function heba()
-{
-echo "heba";
-}
+
 
 
 

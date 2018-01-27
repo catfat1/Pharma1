@@ -50,6 +50,32 @@ class Report extends CI_Controller {
 
 	}
 
+	public function show_report_content()
+	{
+		$data=array('all_reports'=>$this->report_model->get_report());
+
+		   $this->load->view('home/report_content',$data);
+
+
+	}
+
+
+
+function show_report_content_using_ajax()
+
+{
+ 	// $this->load->view('home/function show_report_content_using_ajax');
+	// $id= $this->input->get->('report_id');
+
+	$data=array('all_reports_with_id'=>$this->report_model->get_report_with_report_id());
+
+	echo var_dump($data);
+
+
+
+
+}
+
 
 	public function show_report()
 	{
@@ -150,6 +176,9 @@ class Report extends CI_Controller {
 
 	}
 		/* end of the  function is used to show reports*/
+
+
+
 
 
 

@@ -66,8 +66,7 @@ class Adverse_drug_reaction extends CI_Controller {
       	$this->adr_model->set_adr($data);
         $data['report']=$this->report_model->get_reports($this->input->post('adr_report_id'));
         $data['tab'] = 'laboratory_test';
-        $data['position'] = 'complain';
-        
+	$data['position'] = 'complain';
 	    $this->load->view('home/index',$data);
             
        
