@@ -49,8 +49,10 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
+
 $db['default']['username'] = 'phv_user';
 $db['default']['password'] = 'phv_user';
+
 $db['default']['database'] = 'pharmacovigilance';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';

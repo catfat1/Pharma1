@@ -64,6 +64,7 @@ class Report extends CI_Controller {
 function show_report_content_using_ajax()
 
 {
+
 	$id= $this->input->get('report_id');
 	//echo $id; 
 	//echo 'yarab';
@@ -86,6 +87,7 @@ function show_report_content_using_ajax()
 
 	//echo var_dump($data); exit;
 
+
 }
 
 
@@ -93,6 +95,7 @@ function show_report_content_using_ajax()
 	{
 
 		$data=array('all_reports'=>$this->report_model->get_report());
+
 
 
 		   $this->load->view('home/report',$data);

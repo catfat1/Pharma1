@@ -7,6 +7,15 @@
  <!-- end of header area -->
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+>>>>>>> 4e11c9a3603a374ee583768afaa7cead39890342
 <script>
 /*to show data in the same page in report using ajax*/
 
@@ -19,16 +28,20 @@ var param=id;
 //alert(param);
 
 $.ajax({
+
         type: "post",
+
         url:"/Pharma1/index.php/Report/show_report_content_using_ajax",
         data: { 
             report_id: param, 
             //u:"/Pharma1/index.php/Report/show_report_content_using_ajax"
         },
         success: function(data) {
-         alert(data);
+
+            //alert('ok');
             //console.log(data);
-              // console.log(data);
+               //console.log(data);
+
 
         },
         error: function(result) {
@@ -300,4 +313,8 @@ $(document).ready(function() {
 
 
     </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 4e11c9a3603a374ee583768afaa7cead39890342

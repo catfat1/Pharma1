@@ -1,3 +1,4 @@
+
 <section class="about text-center" id="report_details" 
 	<?php if( $this->session->userdata('flag')== 1)
 	echo" style='display:block'";
@@ -10,8 +11,8 @@
 <div class="contact-heading text-center">
 <h2>Reports</h2>
 
-
-
+<?php 
+echo $_GET['report_id'];
 
 
 
@@ -238,5 +239,6 @@ $(document).ready(function() {
   
 } );
 </script>
+
 
 

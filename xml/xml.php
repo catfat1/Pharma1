@@ -12,9 +12,9 @@
 
 $hostname_conn = "localhost";
 $database_conn = "pharmacovigilance";
-$username_conn = "root";
-$password_conn = "eng_hoba123";
-$mysqli = new mysqli("localhost", "root", "eng_hoba123", 
+$username_conn = "phv_user";
+$password_conn = "phv_user";
+$mysqli = new mysqli("localhost", "phv_user", "phv_user", 
 	"pharmacovigilance")or trigger_error(mysqli_error(),E_USER_ERROR); 
 
 
