@@ -29,6 +29,3 @@ class adr_model extends CI_Model {
 
 
 ?>
-
-
-

@@ -7,12 +7,6 @@
  <!-- end of header area -->
 
 
-
-
-
-
-
-
 <script>
 /*to show data in the same page in report using ajax*/
 
@@ -25,16 +19,74 @@ var param=id;
 //alert(param);
 
 $.ajax({
-        type: "get",
+        type: "post",
         url:"/Pharma1/index.php/Report/show_report_content_using_ajax",
         data: { 
             report_id: param, 
             //u:"/Pharma1/index.php/Report/show_report_content_using_ajax"
         },
         success: function(data) {
-            //alert('ok');
+         //alert(data);
             //console.log(data);
-               //console.log(data);
+              // console.log(data);
+              alert(data);
+
+             $(".modal-body").html(data);
+
+        },
+        error: function(result) {
+            //alert('error');
+        }
+    });
+
+
+			//$('#modal_body').innerHTML=param;
+
+
+	     //$(".modal-body #").val( param );
+
+
+      //$("#exampleModal").dialog({modal: true});
+
+
+
+// $.post("ajax.html", function(data){
+
+//     $("#myModalDiv").html(data).fadeIn();
+
+
+    
+}
+
+
+</script>
+
+
+<script>
+$(document).ready(function(){
+
+function myfunction(id) {
+  		
+//var param=document.getElementById(id).text;
+//alert(param);
+
+var param=id;
+//alert(param);
+
+$.ajax({
+        type: "post",
+        url:"/Pharma1/index.php/Report/show_report_content_using_ajax",
+        data: { 
+            report_id: param, 
+            //u:"/Pharma1/index.php/Report/show_report_content_using_ajax"
+        },
+        success: function(data) {
+         //alert(data);
+            //console.log(data);
+              // console.log(data);
+              alert(data);
+
+             $(".modal-body").html(data);
 
         },
         error: function(result) {
@@ -45,18 +97,22 @@ $.ajax({
 
 
 
+$(document).on("click", ".open-AddBookDialog", function () {
+     var myBookId = $(this).data('id');
 
-    
-}
+     console.log("ss");
+     //$(".modal-body #bookId").val( myBookId );
+     // As pointed out in comments, 
+     // it is superfluous to have to manually call the modal.
+     // $('#addBookDialog').modal('show');
+});
 
 
+
+});
 </script>
 
 
-
-
-
-<?php ?>
 
 
 <section class="about text-center" id="report_details" 
@@ -110,13 +166,72 @@ $.ajax({
 	    <tr>
 
 
-	        <td  >
-	        	<a 	 class="pointer" id="<?php  echo( $key['report_id']);?>"  
-	        	onclick="myfunction(<?php echo( $key['report_id']); ?>)"> 
+	        <td  >    
+
+	        	
+				<a 	 class="pointer" id="<?php  echo( $key['report_id']);?>"  
+	        	onclick="myfunction(<?php echo( $key['report_id']); ?>)" > 
 	        	
 	        	<?php echo( $key['report_id']); ?>
 	        		
-	        	</a>		
+	        	</a>	
+
+
+
+
+	        	<br>
+
+	        	<br>
+				<a 	 class="pointer" id="<?php  echo( $key['report_id']);?>"  
+
+				href="#myModal"
+				data-toggle="modal"
+				data-target="#myModal"
+				class="open-AddBookDialog"
+				data-id=<?php echo( $key['report_id']); ?>
+	        	>
+	        	
+	        	<?php echo( $key['report_id']); ?>
+	        		
+	        	</a>	
+
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade " role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+			
+
 	        </td>
 
 	        <td><?php echo( $key['report_desc']); ?>					</td>
@@ -255,7 +370,26 @@ $.ajax({
 </div>
 
 </section>
-
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

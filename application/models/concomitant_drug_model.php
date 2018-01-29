@@ -30,6 +30,3 @@ class Concomitant_drug_model extends CI_Model {
 
 
 ?>
-
-
-

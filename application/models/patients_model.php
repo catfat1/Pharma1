@@ -40,6 +40,3 @@ class Patients_model extends CI_Model {
 
 
 ?>
-
-
-
