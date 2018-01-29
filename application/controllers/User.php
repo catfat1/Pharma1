@@ -15,7 +15,6 @@ class User extends CI_Controller {
         $this->load->view('user/viewallusers',$data);
     }
     public function insertUser(){
- 
        $id =  $this->user_model->set_user_by_admin();
        $user_item=$this->user_model->get_users($id);
        $encodedArray =  array_map("utf8_encode", $user_item);

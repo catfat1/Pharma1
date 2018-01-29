@@ -50,8 +50,8 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 
-$db['default']['username'] = 'phv_user';
-$db['default']['password'] = 'phv_user';
+$db['default']['username'] = 'root';
+$db['default']['password'] = '123';
 
 $db['default']['database'] = 'pharmacovigilance';
 $db['default']['dbdriver'] = 'mysqli';
