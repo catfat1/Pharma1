@@ -184,8 +184,6 @@
     </script>
 <script>
 function submitUserForm(){
-    console.log("<?php echo base_url(); ?>" + "index.php/machine/insertMachine");
-    //var reg = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
     var mail = $('#inputMail').val();
     var name = $('#inputName').val();
     var password = $('#inputPassword').val();

@@ -166,7 +166,7 @@
                   <a href="<?php echo base_url(); ?>index.php/user/resetpassword" class="btn btn-primary">Reset Password</a>
                 </div>
                 <div class="pull-right">
-                  <a  href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-primary">Logout</a>
+                  <a  href="<?php echo base_url(); ?>index.php/Logout/logout" class="btn btn-primary">Logout</a>
                 </div>
               </li>
             </ul>
@@ -200,7 +200,8 @@
       
       <ul class="sidebar-menu" data-widget="tree">
       <?php if( $this->session->userdata('status') == 1){ ?>
-        <li><a href="<?php echo base_url(); ?>index.php/user/viewAllusers"><i class="fa fa-user"></i> <span>Users</span></a></li>
+        <li><a href="<?php echo base_url(); ?>index.php/User/viewAllusers"><i class="fa fa-user"></i> <span>Users</span></a></li>
+        <li><a href="<?php echo base_url(); ?>index.php/Admin"><i class="fa fa-user"></i> <span>Reports</span></a></li>
       <?php }?>
       </ul>
     </section>
