@@ -1,33 +1,26 @@
-<html>
-<body>
-
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE ichicsr SYSTEM "http://eudravigilance.ema.europa.eu/dtd/icsr21xml.dtd">
-<ichicsr lang="en">
-
-
-
-
 <?php
 
 $hostname_conn = "localhost";
 $database_conn = "pharmacovigilance";
 $username_conn = "root";
-$password_conn = "eng_hoba123";
-$mysqli = new mysqli("localhost", "root", "eng_hoba123", 
+$password_conn = "enghoba_123";
+$mysqli = new mysqli("localhost", "root", "enghoba_123", 
 	"pharmacovigilance")or trigger_error(mysqli_error(),E_USER_ERROR); 
 
 
  
 
 
-$myFile = "rss".date("Y-m-d His")."xml";
-$fh = fopen($myFile,'w') or die("can't open file thhhhh");
+$myFile = "rss".date("Y-m-dHis").".xml";
+$myFilePath = "application/views/xml/rss".date("Y-m-d His").".xml";
+$fh = fopen($myFilePath,'w') or die("can't open file thhhhh");
 
 
 //start of the file xml 
+$rss_txt='';
 $rss_txt .= '<?xml version="1.0" encoding="iso-8859-1"?>'."\n";
 $rss_txt .='<!DOCTYPE ichicsr SYSTEM "http://eudravigilance.ema.europa.eu/dtd/icsr21xml.dtd">'."\n";
+$rss_txt .= "<rss version='2.0'>"."\n";
 $rss_txt .='<ichicsr lang="en">'."\n"."\t";
 
 $rss_txt .='<ichicsrmessageheader>'."\n"."\t"."\t";
@@ -45,7 +38,6 @@ $rss_txt .='</ichicsrmessageheader>';
 
 
 
-$rss_txt .= "<rss version='2.0'>"."\n";
 $rss_txt .= '<channel>'."\n";
 
 
@@ -62,21 +54,19 @@ $res = $mysqli->query($sql);
      	$rss_txt .= '</item>'."\n";
    }
  $rss_txt .= '</channel>'."\n";
+$rss_txt .='</ichicsr>'."\n"."\t";
  $rss_txt .= '</rss>'."\n";
 
  fwrite($fh,$rss_txt);
-
-
-
-// header('Content-Type: application/download');
-// header('Content-Disposition: attachment; filename='.$fh."'");
-// header( 'Content-Length:'. filesize($fh));
-// $fp = fopen("$fh", "r");
-// fpassthru($fh);
-
 fclose($fh);
+
+
+
+ header('Content-Type: application/download');
+ header("Content-Disposition: attachment; filename=$myFile");
+ header( 'Content-Length:'. filesize($myFilePath));
+ $fp = fopen($myFilePath, "r");
+ fpassthru($fp);
+
+fclose($fp);
 ?>
-
-</body>
-</html>
-
