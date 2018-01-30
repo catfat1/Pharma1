@@ -62,53 +62,6 @@ $.ajax({
 </script>
 
 
-<script>
-$(document).ready(function(){
-
-function myfunction(id) {
-  		
-//var param=document.getElementById(id).text;
-//alert(param);
-
-var param=id;
-//alert(param);
-
-$.ajax({
-        type: "post",
-        url:"/Pharma1/index.php/Report/show_report_content_using_ajax",
-        data: { 
-            report_id: param, 
-            //u:"/Pharma1/index.php/Report/show_report_content_using_ajax"
-        },
-        success: function(data) {
-         //alert(data);
-            //console.log(data);
-              //console.log(data);
-              //alert(data);
-
-            //$(".modal-body").html(data);
-
-           // $("#myModal").show();
-
-        },
-        error: function(result) {
-            //alert('error');
-        }
-    });
-
-
-
-
-
-
-
-
-});
-</script>
-
-
-
-
 <section class="about text-center" id="report_details" 
 	<?php if( $this->session->userdata('flag')== 1)
 	echo" style='display:block'";
@@ -159,10 +112,8 @@ $.ajax({
 	    { ?>
 	    <tr>
 
-
 	        <td  >    
 
-	        	
 				<a 	class="pointer" id="<?php  echo( $key['report_id']);?>"  
 	        	onclick="myfunction(<?php echo( $key['report_id']); ?>)"
 	        	href="#myModal"
@@ -212,8 +163,8 @@ $.ajax({
 
 
 <!-- Modal -->
-<div id="myModal" class="modal fade " role="dialog" style="">
-  <div class="modal-dialog">
+<div id="myModal" class="modal fade " role="dialog" style="z-index:99999">
+  <div class="modal-admin">
 
     <!-- Modal content-->
     <div class="modal-content">
