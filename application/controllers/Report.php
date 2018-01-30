@@ -65,7 +65,7 @@ function show_report_content_using_ajax()
 
 {
 	$id= $this->input->post('report_id');// in case of ajax 
-	$id= $this->input->get('report_id');// in case of url href 
+	//$id= $this->input->get('report_id');// in case of url href 
  
 	//echo $id; 
 	//echo 'yarab';
@@ -73,8 +73,12 @@ function show_report_content_using_ajax()
  	// $this->load->view('home/report_content');
 
 	
-	$data=array('all_reports_with_id'=>$this->report_model->get_report_with_report_id($id));
-	$data['reportid']=$id;
+	$data=array('all_reports_with_id'=>$this->report_model->get_report_with_report_id($id),
+				'all_reporters_with_id'=>$this->reporter_model->get_reporter($id)
+
+
+		);
+	//$data['reportid']=$id;
 
 	//$data=array('all_reports'=>$this->report_model->get_report());
 
@@ -82,9 +86,6 @@ function show_report_content_using_ajax()
 
  	$this->load->view('home/show_report_content_using_ajax',$data);
 	//$this->load->view('home/report_content',$data);
-
-
-
 	//echo var_dump($data); exit;
 
 }
@@ -191,6 +192,14 @@ function show_report_content_using_ajax()
 		/* end of the  function is used to show reports*/
 
 
+
+	public function create_xml()
+	{
+		
+		$this->load->view('xml/xml');
+
+
+	}
 
 
 

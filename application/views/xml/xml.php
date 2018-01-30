@@ -22,7 +22,7 @@ $mysqli = new mysqli("localhost", "root", "eng_hoba123",
 
 
 $myFile = "rss".date("Y-m-d His")."xml";
-$fh = fopen($myFile,'w') or die("can't open file");
+$fh = fopen($myFile,'w') or die("can't open file thhhhh");
 
 
 //start of the file xml 

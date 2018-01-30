@@ -28,8 +28,8 @@ $.ajax({
         success: function(data) {
          //alert(data);
             //console.log(data);
-              // console.log(data);
-              alert(data);
+          	console.log(data);
+            //alert(data);
 
              $(".modal-body").html(data);
 
@@ -83,10 +83,12 @@ $.ajax({
         success: function(data) {
          //alert(data);
             //console.log(data);
-              // console.log(data);
-              alert(data);
+              //console.log(data);
+              //alert(data);
 
-             $(".modal-body").html(data);
+            //$(".modal-body").html(data);
+
+           // $("#myModal").show();
 
         },
         error: function(result) {
@@ -97,15 +99,7 @@ $.ajax({
 
 
 
-$(document).on("click", ".open-AddBookDialog", function () {
-     var myBookId = $(this).data('id');
 
-     console.log("ss");
-     //$(".modal-body #bookId").val( myBookId );
-     // As pointed out in comments, 
-     // it is superfluous to have to manually call the modal.
-     // $('#addBookDialog').modal('show');
-});
 
 
 
@@ -169,8 +163,14 @@ $(document).on("click", ".open-AddBookDialog", function () {
 	        <td  >    
 
 	        	
-				<a 	 class="pointer" id="<?php  echo( $key['report_id']);?>"  
-	        	onclick="myfunction(<?php echo( $key['report_id']); ?>)" > 
+				<a 	class="pointer" id="<?php  echo( $key['report_id']);?>"  
+	        	onclick="myfunction(<?php echo( $key['report_id']); ?>)"
+	        	href="#myModal"
+				data-toggle="modal"
+				data-target="#myModal" 
+
+
+	        	> 
 	        	
 	        	<?php echo( $key['report_id']); ?>
 	        		
@@ -179,21 +179,28 @@ $(document).on("click", ".open-AddBookDialog", function () {
 
 
 
+				<form method="post" action="create_xml">
+
+					<input type="submit" value="Create Xml" download>
+				</form>
+
+
+
+
 	        	<br>
 
 	        	<br>
-				<a 	 class="pointer" id="<?php  echo( $key['report_id']);?>"  
+				<!-- <a 	 class="pointer" id="<?php  echo( $key['report_id']);?>"  
 
 				href="#myModal"
 				data-toggle="modal"
 				data-target="#myModal"
-				class="open-AddBookDialog"
 				data-id=<?php echo( $key['report_id']); ?>
 	        	>
 	        	
 	        	<?php echo( $key['report_id']); ?>
 	        		
-	        	</a>	
+	        	</a>	 -->
 
 
 
@@ -205,7 +212,7 @@ $(document).on("click", ".open-AddBookDialog", function () {
 
 
 <!-- Modal -->
-<div id="myModal" class="modal fade " role="dialog">
+<div id="myModal" class="modal fade " role="dialog" style="">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -371,7 +378,8 @@ $(document).on("click", ".open-AddBookDialog", function () {
 
 </section>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal-dialog modal-lg" >
+ --><div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"  style="margin:200px;" >
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -390,7 +398,8 @@ $(document).on("click", ".open-AddBookDialog", function () {
     </div>
   </div>
 </div>
-
+<!-- </div>
+ -->
 
 
 <script>

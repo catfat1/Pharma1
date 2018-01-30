@@ -59,7 +59,7 @@
 	    <tr>
 
 
-	        <td><?php echo( $key['report_id']); ?>						</td>
+	        <td><?php echo $key['report_id']; ?>						</td>
 
 	        <td><?php echo( $key['report_desc']); ?>					</td>
 
