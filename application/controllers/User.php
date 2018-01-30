@@ -5,12 +5,15 @@ class User extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('user_model');
+        $this->load->model('admin_model');
         $this->load->helper('url_helper');
         $this->load->library('session');
     }
     // Admin Section //
     public function viewAllusers(){
         $data['user_items']=$this->user_model->get_users();
+        $data['reports_count'] = $this->admin_model->get_reports_count();
+        $data['reports'] = $this->admin_model->get_reports();        
         $this->load->view('admin-header-view', $data);
         $this->load->view('user/viewallusers',$data);
     }

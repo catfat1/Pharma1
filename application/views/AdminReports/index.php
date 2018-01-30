@@ -4,6 +4,16 @@
 <meta charset="utf-8"/>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
    <head>
+   <style>
+   
+
+    .modal-body {
+            /* 100% = dialog height, 120px = header + footer */
+            max-height: calc(100% - 120px);
+            overflow-y: scroll;
+    }
+      
+    </style> 
       <title>Datatables Alternative Editor</title>
       
       <link rel="stylesheet" href="<?php echo base_url(); ?>include/admin_design/bootstrap.min.css"/> 
@@ -31,8 +41,45 @@
    <body>
 
     <div class="container">
-
-
+<!-- Show All Report Data -->
+        <!-- /.box-body -->
+        <!-- Model Comment-->
+            <div class='comment'>
+                <div class="modal fade" id="modalShowAllData" role="dialog">
+                    <div class="modal-admin">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span aria-hidden="true">&times;</span>
+                                    <span class="sr-only">Close</span>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">Add Comment</h4>
+                            </div>
+                            
+                            <!-- Modal Body -->
+                            <div class="modal-body" id="modal-body-Comment">
+                                <div id='myModalBody'>
+                                </div>
+                            </div>
+                            
+                            <!-- Modal Footer -->
+                            <div class="modal-footer">
+                                <input type="hidden" class="form-control" name="rid" id="rid" />
+                                <input type="hidden" class="form-control" name="approval_type" id="approvalType" />
+                                <button class='sendApproval btn btn-success approveDecline' data-approvaltype='1'><span class='glyphicon glyphicon-ok'></span></button>
+                                <button class='sendApproval btn btn-danger approveDecline' data-approvaltype='3'><span class='glyphicon glyphicon-remove'></span></button>
+                                <h4 class="confirmForm text-left" id="myModalLabel2">Add Comment</h4>
+                                <input type="text" class="form-control confirmForm" name="comment" id="comment" placeholder="Reason..."/>
+                                <button type="button" class="btn btn-primary confirmForm" id="submitBtnLines" onclick="submitComment()">Confirm</button>
+                                <button type="button" class="btn btn-default confirmForm" id="submitBtnLines" onclick="toggleConfirmApprove() & $('#myModalLabel').html('Kindly, Choose an Action!')">Cancel</button>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+<!-- End Show All Report Data-->
 
 <!-- Modal Comment -->
 <div class="modal fade" id="modalFormComment" role="dialog">
@@ -81,6 +128,7 @@
                   <th><strong>Description</strong></th>
                   <th><strong>Creation Date</strong></th>
                   <th><strong>Comments</strong></th>
+                  <th><strong>Show</strong></th>
                 </tr>
         </thead>
                 <tbody>
@@ -93,6 +141,7 @@
                                    Comments
                                  </button>
                             </td>
+                            <td><button type='button' class='loadModal btn close' data-rid='<?php echo $report['report_id'];?>' data-toggle='modal' data-target='#modalShowAllData'> <span class='glyphicon glyphicon-new-window'></span></button></td>
                         </tr>
                 <?php endforeach; ?>
         </tbody>
@@ -184,6 +233,19 @@
                 });
             }
         }
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".loadModal").click(function () {
+                $('#comment').val('') ;
+                var rid = $(this).data('rid');
+                $("#rid").val( rid );
+                $("#myModalLabel").html('Kindly, Find the Report Details!');
+                $('.confirmForm').hide();//hide confirmForm
+                $('.approveDecline').show();//unhide approveDecline
+                $('#myModalBody').load('<?php echo base_url()?>index.php/Admin/reportDetails/'+rid);
+            });
+        });
     </script>
    </body>
 </html>
