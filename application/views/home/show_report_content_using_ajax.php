@@ -128,10 +128,12 @@
 
 
 	        <td  >
-	        	
+	        	<a 	 class="pointer" id="<?php  echo( $key['report_id']);?>"  
+	        	onclick="myfunction(<?php echo( $key['report_id']); ?>)"> 
 	        	
 	        	<?php echo( $key['report_id']); ?>
 	        		
+	        	</a>		
 	        </td>
 
 	        <td><?php echo( $key['report_desc']); ?>					</td>
@@ -260,6 +262,7 @@
 	        
 	    </tr>
 	</table>
+<<<<<<< HEAD
 </div>
 
 
@@ -627,94 +630,6 @@ function opentab(evt, cityName) {
     document.getElementById("defaultOpen").click();
 
 </script>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- </div>
-</div> -->
-<!-- </div>
-</div>
- -->
-<!-- </section>
- -->
-
-
-
-<!-- <script>
-
-$(document).ready(function() {
-    // Setup - add a text input to each footer cell
-    $('#example tfoot th').each( function () {
-        var title = $(this).text();
-        $(this).html( '<input type="text" placeholder=" '+title+'" />' );
-    } );
- 
-  // DataTable
-
-	$('#example').DataTable( {
-		"scrollX": true,
-        dom: 'Bfrltip',
-        buttons: [
-             'copy',
-            'excel',
-            'csv',
-            'pdf'
-        ]
-    } );
-
-     var table = $('#example').DataTable();
-    // Apply the search
-    table.columns().every( function () {
-        var that = this;
- 
-        $( 'input', this.footer() ).on( 'keyup change', function () {
-            if ( that.search() !== this.value ) {
-                that
-                    .search( this.value )
-                    .draw();
-            }
-        } );
-    } );
-
-
-  
-} );
-</script>
- -->
-
-
-
-
 
     </body>
 </html>

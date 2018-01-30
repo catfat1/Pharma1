@@ -23,7 +23,8 @@ class report_model extends CI_Model {
 
             'report_serious' => $this->input->post('seriousness'),
 
-            'report_status_id' => $this->input->post('report_status'),
+            'report_status_id' => $this->input->post('report_status')
+
 
         );
         
@@ -75,11 +76,11 @@ public function get_report()
 
 /*this is show report detail with spesific  id */
 public function get_report_with_report_id($report_id)
-
 {
-    //$this->load->view('home/show_report_content_using_ajax');
-    //$report_id=$this->input->get->('report_id')
-    $sql=$this->db->select('*')
+     //$this->load->view('home/show_report_content_using_ajax');
+     //$report_id=$this->input->get->('report_id')
+     $sql=$this->db->select('*')
+
                     ->from ('report')
                     ->where('report_id',$report_id)
                     ->get();

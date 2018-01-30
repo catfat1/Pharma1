@@ -36,5 +36,41 @@ class User_model extends CI_Model {
         return $query->row_array();
         
     }
+
+    // Insert New User
+    public function set_user_by_admin(){
+        $data = array(
+             'user_password' => MD5($this->input->post('User_Password')),
+             'user_mail' => $this->input->post('User_Mail'),
+             'user_name' => $this->input->post('User_Name'),
+             'create_by' => $this->session->userdata('user_id')
+         );
+         $this->db->insert('user', $data);
+         $insert_id = $this->db->insert_id();
+         return $insert_id;
+    }
+
+    // delete user
+    public function delete_user(){
+        $data = array( 
+            'user_end_date'	=>  date('d/m/y') ,
+            'delete_by' => $this->session->userdata('user_id')
+        );
+        $this->db->where('user_id', $this->input->post('id'));
+        $this->db->update('user', $data);
+    }
+
+    // edit user
+    public function edit_user(){
+        $data = array( 
+            'user_name'	=>  $this->input->post('User_Name'),
+            'user_mail'	=>   $this->input->post('User_Mail'),
+            'user_password' => MD5($this->input->post('User_Password')),
+            'update_at' => date('d/m/Y h:i:sa'),
+            'update_by' => $this->session->userdata('user_id'),
+        );
+        $this->db->where('user_id', $this->input->post('User_Id'));
+        $this->db->update('user', $data);
+    }
 }
 ?>

@@ -41,105 +41,48 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index2.html" class="logo">
-      <span class="logo-lg"><b><?php  echo $this->session->userdata('company_name');?></b></span>
+    <a href="http://localhost/Pharma2/include/img/eepilogo.png" class="logo">
+      <span class="logo-lg"><b>Pharmacovigilance</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
-          <!--li class="dropdown messages-menu">
+    <!-- Sidebar toggle button-->
+    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+      <span class="sr-only">Toggle navigation</span>
+    </a>
+    <!-- Navbar Right Menu -->
+    <div class="navbar-custom-menu">
+      <ul class="nav navbar-nav">
+        <!-- Notifications: style can be found in dropdown.less -->
+          <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-envelope-o"></i>
-              <span class="label label-success">4</span>
+              <i class="fa fa-bell-o"></i>
+              <span class="label label-warning"><?php echo $reports_count;?> </span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header">You have 4 messages</li>
+              <li class="header">You have <?php echo $reports_count;?> notifications</li>
               <li>
                 <!-- inner menu: contains the actual data -->
-                <!--ul class="menu">
-                  <li><!-- start message -->
-                    <!--a href="#">
-                      <div class="pull-left">
-                        <img src="" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        Support Team
-                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
-                  <!-- end message -->
-                  <!--li>
-                    <a href="#">
-                      <div class="pull-left">
-                        <img src="/IIS_web/hr_rep/Attendance/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        AdminLTE Design Team
-                        <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
+                <ul class="menu">
+                  <?php foreach($reports as $report):?>
+                  
                   <li>
                     <a href="#">
-                      <div class="pull-left">
-                        <img src="/IIS_web/hr_rep/Attendance/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        Developers
-                        <small><i class="fa fa-clock-o"></i> Today</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
+                      <i class="fa fa-users text-aqua"></i> <?php echo $report['report_id'].'-'.$report['report_desc'];?>
                     </a>
                   </li>
-                  <li>
-                    <a href="#">
-                      <div class="pull-left">
-                        <img src="/IIS_web/hr_rep/Attendance/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        Sales Department
-                        <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="pull-left">
-                        <img src="/IIS_web/hr_rep/Attendance/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        Reviewers
-                        <small><i class="fa fa-clock-o"></i> 2 days</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
+                  <?php endforeach;?>
                 </ul>
               </li>
-              <li class="footer"><a href="#">See All Messages</a></li>
-            </ul-->
+              <li class="footer"><a href="<?php echo base_url();?>index.php/Admin">View all</a></li>
+            </ul>
           </li>
-          <!-- Notifications: style can be found in dropdown.less -->
-         
-         
+        <!-- End Notifications: style can be found in dropdown.less -->
+          <!--End Navbar-->
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <!--src="/IIS_web/hr_rep/Attendance/dist/img/user2-160x160.jpg"-->
+            <!--src="<?php echo base_url();?>dist/img/user2-160x160.jpg"-->
             
               <img src="<?php echo base_url(); ?>include/img/user2-160x160.jpg" class="user-image" alt="User Image">
             
@@ -166,7 +109,7 @@
                   <a href="<?php echo base_url(); ?>index.php/user/resetpassword" class="btn btn-primary">Reset Password</a>
                 </div>
                 <div class="pull-right">
-                  <a  href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-primary">Logout</a>
+                  <a  href="<?php echo base_url(); ?>index.php/Logout/logout" class="btn btn-primary">Logout</a>
                 </div>
               </li>
             </ul>
@@ -200,7 +143,8 @@
       
       <ul class="sidebar-menu" data-widget="tree">
       <?php if( $this->session->userdata('status') == 1){ ?>
-        <li><a href="<?php echo base_url(); ?>index.php/user/viewAllusers"><i class="fa fa-user"></i> <span>Users</span></a></li>
+        <li><a href="<?php echo base_url(); ?>index.php/User/viewAllusers"><i class="fa fa-user"></i> <span>Users</span></a></li>
+        <li><a href="<?php echo base_url(); ?>index.php/Admin"><i class="fa fa-user"></i> <span>Reports</span></a></li>
       <?php }?>
       </ul>
     </section>
@@ -212,7 +156,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        OEE
+         Pharmacovigilance
         <small>System</small>
       </h1>
      

@@ -34,7 +34,7 @@
      
     <!-- Button to trigger modal -->
 <button class="btn btn-success" data-toggle="modal" data-target="#modalFormAdd">
-    Add New Machine
+    Add New User
 </button>
 
 <!-- Modal Add -->
@@ -115,7 +115,7 @@
             <!-- Modal Footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary submitBtn" onclick="editMachineForm()">SUBMIT</button>
+                <button type="button" class="btn btn-primary submitBtn" onclick="editUserForm()">SUBMIT</button>
             </div>
         </div>
     </div>
@@ -132,7 +132,7 @@
                 </thead>
                 <tbody>
                 <?php foreach ($user_items as $user_item): ?>
-                        <tr>
+                        <tr id='row<?php echo $user_item['user_id'];?>'>
                             <td id="name<?php echo $user_item['user_id']; ?>"><?php echo $user_item['user_name']; ?></td>
                             <td id="mail<?php echo $user_item['user_id']; ?>"><?php echo $user_item['user_mail']; ?></td>
                             <td> <button class="btn btn-success showEditModel" id='edit<?php echo $user_item['user_id']; ?>' data-toggle="modal" data-target="#modalFormEdit" data-id="<?php echo $user_item['user_id']; ?>">
@@ -183,10 +183,7 @@
     } );
     </script>
 <script>
-
 function submitUserForm(){
-    console.log("<?php echo base_url(); ?>" + "index.php/machine/insertMachine");
-    //var reg = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
     var mail = $('#inputMail').val();
     var name = $('#inputName').val();
     var password = $('#inputPassword').val();
@@ -224,8 +221,8 @@ function submitUserForm(){
                     $('#inputMail').val('');
                     $('#inputPassword').val('');
                     $('.statusMsg').html('<span style="color:green;">The New User has been added Successfully!.</p>');
-                    $('#example').append('<tr><td id=name'+obj.USER_ID+'>'+obj.USER_NAME+'</td><td id=desca'+obj.USER_ID+'>'+obj.USER_MAIL+'</td><td></td><td></td></tr>');
-                               
+                    $('#example').DataTable().row.add($('<tr id="row'+obj.user_id+'"><td id=name'+obj.user_id+'>'+obj.user_name+'</td><td id=mail'+obj.user_id+'>'+obj.user_mail+'</td><td><button class="btn btn-success showEditModel" id="edit'+obj.user_id+'" data-toggle="modal" data-target="#modalFormEdit" data-id="'+obj.user_id+'">Edit User</button></td><td><input id="delete'+obj.user_id+'" type="button" class="btn btn-success" onclick="deleterecord('+obj.user_id+');" value="Delete"></td></tr>')).draw();                                             
+                    
                 }else{
                     $('.statusMsg').html('<span style="color:red;">Some problem occurred, please try again.</span>');
                 }
@@ -235,7 +232,7 @@ function submitUserForm(){
         });
     }
 }
-function editMachineForm(){
+function editUserForm(){
     var rowId = $(this).data('id');
     var id = $('#editID').val();
     var name = $('#editName').val();
@@ -250,10 +247,14 @@ function editMachineForm(){
         alert('Please enter the user mail.');
         $('#editMail').focus();
         return false;
+    }else if(password.trim() == '' ){
+        alert('Please enter the password.');
+        $('#editPassword').focus();
+        return false;
     }else{
         $.ajax({
             type:'POST',
-            url: "<?php echo base_url(); ?>" + "index.php/user/editUser",
+            url: "<?php echo base_url(); ?>" + "index.php/User/editUser",
             data: { User_Id:id , User_Name: name  , User_Mail: mail, User_Password: password},
             dataType: 'text',
             beforeSend: function () {
@@ -268,8 +269,8 @@ function editMachineForm(){
                 console.log(obj.CODE);
                 if(obj.length != 0){
                     $('.statusMsg').html('<span style="color:green;">The User has been edited Successfully!.</p>');
-                    document.getElementById("mail"+obj.USER_ID).innerText=obj.USER_MAIL;  
-                    document.getElementById("name"+obj.USER_ID).innerText=obj.USER_NAME;
+                    document.getElementById("mail"+obj.user_id).innerText=obj.user_mail;  
+                    document.getElementById("name"+obj.user_id).innerText=obj.user_name;
                 }else{
                     $('.statusMsg').html('<span style="color:red;">Some problem occurred, please try again.</span>');
                 }
@@ -281,28 +282,33 @@ function editMachineForm(){
 }
 </script>
 <script>
-
+// to populate edit modal form
 $(document).ready(function() {
-	$( ".showEditModel" ).click(function(e) {
+    $('#example').on('click', '.showEditModel',function() {
         var data = $(this).data('id');
         $('#editID').val(data);
         $('#editName').val(document.getElementById("name"+data).innerText);
         $('#editMail').val(document.getElementById("mail"+data).innerText);
-	});
+   });
 });   
 </script>
 <script>
+// to delete record from database and datatable
 function deleterecord(id){
       var result = confirm("Are you sure you want to deactive the account of this user ?!.");
-      $.ajax({
+      if(result){
+        $.ajax({
             type:'POST',
-            url: "<?php echo base_url(); ?>" + "index.php/user/deleteUser",
+            url: "<?php echo base_url(); ?>" + "index.php/User/deleteUser",
             data: { id:id },
             dataType: 'text',
             success:function(data){ 
-                $('#edit'+id).parent().parent().remove();
+                //$('#edit'+id).parent().parent().remove();
+                $('#example').DataTable().row('#row'+id).remove().draw( false );
+                console.log(data);
             }
         });
+      }
     }
 </script>
    </body>

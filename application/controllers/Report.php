@@ -64,9 +64,8 @@ class Report extends CI_Controller {
 function show_report_content_using_ajax()
 
 {
-	$id= $this->input->post('report_id');// in case of ajax 
-	//$id= $this->input->get('report_id');// in case of url href 
- 
+
+	$id= $this->input->get('report_id');
 	//echo $id; 
 	//echo 'yarab';
 	//exit;
@@ -78,16 +77,8 @@ function show_report_content_using_ajax()
 
 
 		);
-	//$data['reportid']=$id;
-
-	//$data=array('all_reports'=>$this->report_model->get_report());
-
-	//$data=$this->report_model->get_report_with_report_id($id);
 
  	$this->load->view('home/show_report_content_using_ajax',$data);
-	//$this->load->view('home/report_content',$data);
-	//echo var_dump($data); exit;
-
 }
 
 
